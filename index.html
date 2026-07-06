@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>cro_slayy_holic — Handmade Crochet · Crochet, but make it slay</title>
+<meta name="description" content="Hand-crocheted sleeves, toys & beanies. One of a kind, made to order. DM to shop." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- animated background -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <!-- header -->
+  <header class="hdr" id="top">
+    <a class="logo" href="#top">
+      <img src="images/logo.png" alt="cro_slayy_holic"
+           onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-text',textContent:'cro_slayy_holic'}))" />
+    </a>
+    <nav class="nav">
+      <a href="#shop">Shop</a>
+      <a href="#custom">Custom</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="menu">☰</button>
+  </header>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#shop">Shop</a><a href="#custom">Custom</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </div>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="mark" aria-hidden="true">slay</div>
+    <div class="hero-inner">
+      <p class="eyebrow">Handmade · Cozy · Cute</p>
+      <h1>Crochet,<br/>but make it <em>slay.</em></h1>
+      <p class="lede">Hand-crocheted sleeves, toys &amp; beanies — made one stitch at a time. Every piece is one of a kind. Custom always welcome.</p>
+      <div class="hero-cta">
+        <a href="#shop" class="btn btn-solid">View the collection</a>
+        <a href="#custom" class="btn btn-line">Request a custom piece</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- shop -->
+  <section class="sec" id="shop">
+    <div class="wrap">
+      <div class="sec-h reveal">
+        <h2>The Granny Grid Collection</h2>
+        <span>Four colour stories</span>
+      </div>
+      <div id="product-list"><!-- rendered from data/products.js --></div>
+    </div>
+  </section>
+
+  <!-- custom -->
+  <section class="sec custom" id="custom">
+    <div class="wrap">
+      <div class="custom-grid">
+        <div class="custom-copy reveal">
+          <p class="kicker">Made to order</p>
+          <h2>Got a vibe?<br/><em>Let's stitch it.</em></h2>
+          <p class="muted">Tell me what you want — colors, characters, size — and I'll make it just for you. It all starts with a DM.</p>
+        </div>
+        <div class="form reveal">
+          <label>Your name<input id="f-name" type="text" placeholder="e.g. Aanya" /></label>
+          <label>What do you want made?<textarea id="f-idea" rows="2" placeholder="a custom blue octopus with tiny sunglasses"></textarea></label>
+          <label>Yarn colors / vibe<input id="f-vibe" type="text" placeholder="ocean blues + a pop of coral" /></label>
+          <div class="btn-row">
+            <button class="btn btn-solid" id="send-ig">DM on Instagram</button>
+            <button class="btn btn-line" id="send-mail">Email it</button>
+          </div>
+          <p class="mini" id="custom-status"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- about -->
+  <section class="sec about" id="about">
+    <div class="wrap">
+      <p class="kicker reveal">The maker</p>
+      <p class="about-big reveal">A tiny one-person crochet studio. Every sleeve, toy and beanie is made by hand — no factory, no two exactly alike. <em>Cozy, cute, and a little bit slay.</em></p>
+      <div class="badges reveal"><span>100% handmade</span><span>Made to order</span><span>One of a kind</span></div>
+    </div>
+  </section>
+
+  <!-- footer / contact -->
+  <footer class="ft" id="contact">
+    <div class="wrap">
+      <h2 class="reveal">Got a vibe?<br/><em>Let's stitch it.</em></h2>
+      <div class="btn-row center reveal">
+        <a class="btn btn-solid" id="foot-ig" href="#" target="_blank" rel="noopener">DM on Instagram</a>
+        <a class="btn btn-line" id="foot-mail" href="#">Email</a>
+      </div>
+      <div class="ft-bottom">
+        <span class="ft-logo">cro_slayy_holic</span>
+        <nav><a href="#shop">Shop</a><a href="#custom">Custom</a><a href="#about">About</a><a href="#top">Top ↑</a></nav>
+        <span class="copyright">© <span id="year"></span> · handmade with love</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- detail modal -->
+  <div class="modal" id="detail" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="detail-close" aria-label="close">×</button>
+      <div class="modal-media"><img id="detail-img" alt="" /></div>
+      <div class="modal-body">
+        <span id="detail-tag" class="pill"></span>
+        <h3 id="detail-name"></h3>
+        <p id="detail-price" class="price"></p>
+        <div id="detail-colors" class="swatches"></div>
+        <p id="detail-desc" class="desc"></p>
+        <div class="btn-row">
+          <a class="btn btn-solid" id="detail-ig" href="#">DM to order</a>
+          <a class="btn btn-line" id="detail-mail" href="#">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/bg.js"></script>
+  <script src="js/lib/lenis.min.js"></script>
+  <script src="js/lib/anime.min.js"></script>
+  <script src="data/products.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/anim.js"></script>
+</body>
+</html>
